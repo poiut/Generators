@@ -1,0 +1,16 @@
+import statistics
+
+
+def rolling_avg(dataset, k):
+    """ Generator function that calculates the running average. Will raise assertion error if
+    grid interval is greater that the set's length"""
+    assert k <= len(dataset), "Interval is greater than the dataset"
+    
+    
+    m = len(dataset)
+    for i in range(m - k + 1):
+        preavg_list = []
+        for index in range(i, i+k):
+            preavg_list.append(dataset[index])
+            
+        yield statistics.mean(preavg_list) 
